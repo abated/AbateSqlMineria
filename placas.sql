@@ -37,7 +37,6 @@ CREATE TABLE producto(
     id INT NOT NULL AUTO_INCREMENT,
 	id_proveedor INT NOT NULL,
     nombre VARCHAR(30) NOT NULL,
-    cantidad INT NOT NULL,
     stock INT NOT NULL,
     precio INT NOT NULL,
     FOREIGN KEY(id_proveedor) references proveedor(id),
