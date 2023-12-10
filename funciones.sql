@@ -12,7 +12,7 @@ begin
       
  
  end //
- 
+select * from producto;
  
  delimiter //
 create function agregarCliente(
@@ -25,6 +25,25 @@ nombreUsuario varchar(30),contraseniaUsuario varchar(30),emailUsuario varchar(30
    return "Usuario agregado correctamente";
 
 end//
+use placas;
+ delimiter //
+create function totalDescuentoId30(
+valor1 int,valor2 int)
+   returns int
+   deterministic
+   begin
+      declare total int default 0;
+      declare precio1 int;
+      declare precio2 int;
+      select precio into precio1 from producto where id=valor1;
+	  select precio into precio2 from producto where id=valor2;
+      
+ set total = (precio1+precio2)*(1-0.3);
+
+return total;
+end//
+
+
 
       
 

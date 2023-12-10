@@ -14,7 +14,6 @@ inner join cliente
 on usuario.id = cliente.id_usuario;
 
 
-
 create or replace view productoProveedor AS
 select p.nombre as nombreProducto,pr.nombre as nombreproveedor
 from producto p
@@ -22,12 +21,32 @@ inner join proveedor as pr
 on p.id_proveedor = pr.id;
 
 
-
 create or replace view PedidoUsuario AS
 select u.nombre_usuario,u.email, p.id as idPedido, p.fecha
 from pedido p
 inner join usuario as u
 on p.id = u.id;
+
+
+
+
+ delimiter //
+create function totalDescuentoId30(
+valor1 int,valor2 int)
+   returns int
+   deterministic
+   begin
+      declare total int default 0;
+      declare precio1 int;
+      declare precio2 int;
+      select precio into precio1 from producto where id=valor1;
+	  select precio into precio2 from producto where id=valor2;
+      
+ set total = (precio1+precio2)*(1-0.3);
+
+return total;
+end//
+
 
 delimiter //
 create function PreciosId(
@@ -111,6 +130,7 @@ after insert on `usuario`
 for each row
 insert into `NuevosUsuarios`(id_usuario,nombre_usuario,email_usuario,fecha,usuario,accion) values (new.id,new.nombre_usuario,new.email,now(),system_user(),'insert');
 $$
+
 DELIMITER $$
 CREATE TRIGGER trigger_check_usuario_before_insert
 BEFORE INSERT ON usuario 

@@ -2,10 +2,10 @@ CREATE SCHEMA placas;
 USE placas;
 
 CREATE TABLE usuario(
-	id INT NOT NULL AUTO_INCREMENT, 
-    nombre_usuario VARCHAR(30) NOT NULL,
-    contrasenia_usuario VARCHAR(30) NOT NULL,
-    email VARCHAR(30) NOT NULL,
+	id INT NOT NULL UNIQUE AUTO_INCREMENT, 
+    nombre_usuario VARCHAR(30) NOT NULL UNIQUE,
+    contrasenia_usuario VARCHAR(30) NOT NULL UNIQUE,
+    email VARCHAR(30) NOT NULL UNIQUE,
     PRIMARY KEY(id)
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE pedido(
 );
 
 CREATE TABLE cliente(
-    dni INT NOT NULL,
+    dni INT NOT NULL UNIQUE,
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(30) NOT NULL,
     id_usuario INT NOT NULL,
@@ -27,14 +27,14 @@ CREATE TABLE cliente(
 );
 
 CREATE TABLE proveedor(
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT UNIQUE,
     nombre VARCHAR(60) NOT NULL,
     direccion VARCHAR(120) NOT NULL,
     PRIMARY KEY(id)
 );
 
 CREATE TABLE producto(
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT UNIQUE,
 	id_proveedor INT NOT NULL,
     nombre VARCHAR(30) NOT NULL,
     stock INT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE producto(
 );
 
 CREATE TABLE detalle_pedido(
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT UNIQUE,
     id_pedido INT NOT NULL,
     id_producto INT NOT NULL,
     cantidad INT NOT NULL,
@@ -53,6 +53,8 @@ CREATE TABLE detalle_pedido(
 	FOREIGN KEY(id_pedido) references pedido(id),
     FOREIGN KEY(id_producto) references producto(id)
 );
+
+
 
 
 
