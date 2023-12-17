@@ -284,3 +284,13 @@ for each row
 insert into `ProductosEliminados`(producto_eliminado,precio,fecha,usuario,accion) values (old.nombre,old.precio,now(),system_user(),'delete');
 $$
 
+create or replace view verificarUsuariosNuevos AS
+select un.usuario, un.nombre_usuario,un.email_usuario, un.fecha
+from NuevosUsuarios un
+order by un.fecha;
+
+create or replace view ganancias AS
+select f.fecha,dp.cantidad,dp.subtotal
+from factura f
+INNER JOIN detalle_pedido dp
+ON f.id_detalle_pedido = dp.id;
