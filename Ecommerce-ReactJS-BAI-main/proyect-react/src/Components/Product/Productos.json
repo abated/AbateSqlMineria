@@ -1,0 +1,58 @@
+[
+    {
+        "id": "g1",
+        "name": "Guitarra Electrica",
+        "description": "Guitarra Epiphone SG de 2 pastillas humbucker",
+        "stock": 30,
+        "price": 400000,
+        "categoria": "Guitarra",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_739195-MLA46818597679_072021-O.webp"
+    },
+
+    {
+        "id": "g2",
+        "name": "Piano",
+        "description": "Piano Yamaha",
+        "stock": 20,
+        "price": 700000,
+        "categoria": "Pianos",
+        "imagen": "https://www.pianos.rocks/cdn/shop/products/41xdtGJBfmL_grande.jpg?v=1658805592"
+    },
+    {
+        "id": "g3",
+        "name": "Bajo Ibanez GSR200",
+        "description": "La línea Gsr ofrece la famosa elegancia Soundgear, la comodidad, el tono y la jugabilidad. No sólo esta línea es mas linda y suena mejor que otras en su gama de precios, sino que su rigurosa inspección, puesta en marcha y garantía, es la misma que se utilizan en los modelos más caros de Ibanez",
+        "stock": 150,
+        "price": 550000,
+        "categoria": "Bajo",
+        "imagen": "https://acdn.mitiendanube.com/stores/152/693/products/base-productos_0000_2006260116045021_01_medium1-6de901621c0d807f3c16522951385092-640-0.jpg"
+    },
+    {
+        "id": "g4",
+        "name": "Guitarra Electrica Telecaster",
+        "description": "Fender Telecaster de 2 Pastillas Single Coil modificadas",
+        "stock": 25,
+        "price": 800000,
+        "categoria": "Guitarra",
+        "imagen": "https://http2.mlstatic.com/D_NQ_NP_914794-MLA54202754499_032023-O.webp"
+    },
+    { 
+        "id": "g5",
+        "name": "Microfono Sure",
+        "description": "SHURE SV100 MICRÓFONO DE MANO",
+        "stock": 45,
+        "price": 46000,
+        "categoria": "Microfono",
+        "imagen": "https://www.heavenimagenes.com/heavencommerce/1a035daf-7cc1-4bcb-89f7-07fab0b18bbb/images/v2/SHURE/888_medium.jpg"
+    },
+    {
+        "id": "g6",
+        "name": "Amplificador De Guitarra Vox",
+        "description": "Amplificador de Guitarra VOX Combo Valvular 30W 1x12 Celestion VX12",
+        "stock": 25,
+        "price": 900000,
+        "categoria": "Amplificador",
+        "imagen":"https://bairesrocks.vteximg.com.br/arquivos/ids/220462/690660-MLA42696681585_072020-F.jpg?v=637320876285300000"
+
+      }
+]
