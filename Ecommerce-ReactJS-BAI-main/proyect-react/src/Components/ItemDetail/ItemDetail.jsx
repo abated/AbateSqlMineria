@@ -1,13 +1,21 @@
-import CartContext from "../CartContext/CartContext";
+import { CartContext } from "../CartContext/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
+
 import { useContext, useEffect,useState } from "react";
-// const {cart,addToCart} = useContext(CartContext)
+import addToCart from '../CartContext/CartContext'
+// const dario = ()=>{
+//     addToCart(product)
+//   }
 
 
 const ItemDetail = ({ ProductoSeleccionado }) => {
 
     useEffect(() => {
-          }, []);
+        }, []);
+
+        // const clickAgregarProducto = () => {
+        //     addToCart(ProductoSeleccionado)
+        //   }
 
     if (!ProductoSeleccionado) {
         return <div>Cargando...</div>;
@@ -25,7 +33,7 @@ const ItemDetail = ({ ProductoSeleccionado }) => {
                     <p>Category: {ProductoSeleccionado.categoria}</p> 
                 </section>
             </section>
-            <ItemCount stock={10} initial={2} item={ProductoSeleccionado}/>
+            <ItemCount stock={10} initial={1} item={ProductoSeleccionado}  />
             
         </main>
     );

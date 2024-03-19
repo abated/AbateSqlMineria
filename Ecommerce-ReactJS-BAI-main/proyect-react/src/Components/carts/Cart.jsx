@@ -1,45 +1,33 @@
-import { useState, useContext } from "react";
-import CartContext from "../CartContext/CartContext";
+import { useContext } from "react";
 import NoItemsLoad from "../ItemLoad/ItemLoad";
-import SendOrder from "../SendOrder/SendOrder";
-
-
+import { CartContext } from "../CartContext/CartContext";
 
 const Cart = () => {
-  const { cart, setCart, removeAll, total} = useContext(CartContext); 
- 
+  const { cart, total} = useContext(CartContext); 
+
+ console.log(cart)
   return !cart.length ? (
     <NoItemsLoad />
 ) : (
     <div className="tarjetas">
       {cart.map((item) => {
         return (
-          <div key={item.id}>
-            <Card maxW="sm">
-              <CardHeader>
-                <Heading size="md">{item.name}</Heading>
-                <img src={item.img} alt="" />
-              </CardHeader>
-              <CardBody>
-                <Text as="b">Cantidad: {item.quantity}</Text>
-                <Text>Precio: $ {item.price}</Text>
-                <Text>Total: $ {item.price * item.quantity}</Text>
-              </CardBody>
-              <CardFooter>
-              <div className="bloqButtonClear">
-                <button className="btn btn-danger btnClear" onClick={removeAll}>
-                    Vaciar carrito
-                </button>
-                </div>
-              </CardFooter>
-            </Card>
-          </div>
+         <div key={item.id}>
+          <h1>
+            producto es : {item.name}
+            cantidad es : {item.cantidad}
+            precio es : {item.cantidad * item.price}
+          
+
+          </h1>
+         </div>
+        
         );
       }
       )}
         <div className="total">
           <h4>TOTAL $ {total()}</h4>
-          <SendOrder/>
+          
         </div>
     </div>
   );
