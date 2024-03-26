@@ -15,10 +15,10 @@ function NavBar() {
         <NavLink to="/"><Navbar.Brand ><Logo/></Navbar.Brand></NavLink>
           <Nav className="me-auto">
           <NavLink to="/">Home</NavLink>
-            <NavLink to="/categoriaId/Guitarra">Guitarra</NavLink>
-            <NavLink to="/categoriaId/Amplificador" >Amplificador</NavLink>
-            <NavLink to="/categoriaId/Pianos">Pianos</NavLink>
-            <NavLink to="/categoriaId/Microfono">Microfono</NavLink>
+            <NavLink to="/category/Guitarra">Guitarra</NavLink>
+            <NavLink to="/category/Amplificador" >Amplificador</NavLink>
+            <NavLink to="/category/Pianos">Pianos</NavLink>
+            <NavLink to="/category/Microfono">Microfono</NavLink>
             <NavLink to="/Cart"> <CarWidget/> </NavLink>
           </Nav>
         </Container>

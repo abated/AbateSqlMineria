@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ItemList from "../ItemList/Itemlist";
-import { getFirestore, collection, getDocs} from "firebase/firestore";
+import { getFirestore, collection, getDocs,where,query} from "firebase/firestore";
 import { useParams } from "react-router-dom";
 
 export default function ItemListContainer() {
@@ -9,32 +9,62 @@ export default function ItemListContainer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const db = getFirestore();
+    const db = getFirestore()
+    const productosCollection = collection(db, 'productos')
+    if (category === undefined) {
+      const consulta = getDocs(productosCollection)
+      consulta
+        .then((resultado) => {
+          const productos = resultado.docs.map(doc => {
+            const productoConId = doc.data()
+            productoConId.id = doc.id
+            return productoConId
+          }
+          )
+          setProductos(productos)
+          setLoading(false)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+        .finally(() => {
+        })
 
-    const productosCollection = collection(db, "productos");
-
-    let queryProductos;
-    if (category) {
-      queryProductos = query(productosCollection, where("categoria", "==", category));
     } else {
-      queryProductos = productosCollection;
+      const queryDeFirestore = query(productosCollection, where("category", "==", category))
+      const consulta = getDocs(queryDeFirestore)
+      consulta
+        .then((resultado) => {
+          const productos = resultado.docs.map(doc => {
+            const productoConId = doc.data()
+            productoConId.id = doc.id
+            return productoConId
+          })
+          setProductos(productos)
+          setLoading(false)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
+  }
+    , [category])
 
     
-    const fetchData = async () => {
-      try {
-        const snapshot = await getDocs(queryProductos);
-        const productosData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setProductos(productosData);
-      } catch (error) {
-        console.error("Error al obtener datos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //   const fetchData = async () => {
+  //     try {
+  //       const snapshot = await getDocs(queryProductos);
+  //       const productosData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  //       setProductos(productosData);
+  //     } catch (error) {
+  //       console.error("Error al obtener datos:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchData();
-  }, [category]);
+  //   fetchData();
+  // }, [category]);
 
   return (
     <main>
